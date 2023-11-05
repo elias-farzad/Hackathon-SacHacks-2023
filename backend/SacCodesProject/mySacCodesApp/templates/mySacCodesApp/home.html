@@ -1,0 +1,39 @@
+<html>
+<head>
+    <title>Select Track</title>
+</head>
+<body>
+    <h1>Select a Track</h1>
+
+    <form method="post" action="{% url 'home' %}">
+
+        {% csrf_token %}
+        <label for="selected_index">Select a track:</label>
+
+        <select name="selected_index" id="selected_index">
+            {% for track in tracks_info %}
+                <option value="{{ forloop.counter }}">{{ track.track_name }}</option>
+            {% endfor %}
+        </select>
+        
+        
+        <br>
+        <label for="comment">Leave a comment:</label>
+        <textarea name="comment" id="comment" rows="4" cols="50" placeholder="Enter your comment"></textarea>
+        <br>
+        <input type="submit" value="Submit Comment">
+    </form>
+
+    {% if comments %}
+        <h2>Comments:</h2>
+        <ul>
+            {% for comment in comments %}
+                <li>
+                    <strong>{{ comment.track.track_name }}:</strong> {{ comment.comment }}
+                </li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+</body>
+</html>
+

@@ -1,0 +1,69 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Authentication</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+
+    <h1>Select a Track</h1>
+
+    <form method="post" action="{% url 'home' %}">
+
+        {% csrf_token %}
+        <label for="selected_index">Select a track:</label>
+
+        <select name="selected_index" id="selected_index">
+            {% for track in tracks_info %}
+                <option value="{{ forloop.counter }}">{{ track.track_name }}</option>
+            {% endfor %}
+        </select>
+        
+        
+        <br>
+        <label for="comment">Leave a comment:</label>
+        <textarea name="comment" id="comment" rows="4" cols="50" placeholder="Enter your comment"></textarea>
+        <br>
+        <input type="submit" value="Submit Comment">
+    </form>
+
+    {% if comments %}
+        <h2>Comments:</h2>
+        <ul>
+            {% for comment in comments %}
+                <li>
+                    <strong>{{ comment.track.track_name }}:</strong> {{ comment.comment }}
+                </li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+
+    {% for message in messages %}
+    <div class="alert alert-{{ message.tags }} alert-dismissable fade show" role="alert">
+      <strong>Message: </strong> {{ message }}
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    {% endfor %}
+
+    <h3>welcome to lyriclink</h3>
+
+    {% if user.is_authenticated %}
+    <h3>Hello {{ fname }}</h3>
+    <h4>You're succesfully logged in.</h4>
+    <button type="submit"><a href = "/signout">SignOut</a></button>
+    {% else %}
+    <button type="submit"> <a href = "/signup">SignUp</a></button>
+    <button type="submit"><a href = "/signin">SignIn</a></button>
+    {% endif %}
+
+
+
+    <script src="index.js"></script>
+  </body>
+</html>
