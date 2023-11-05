@@ -1,0 +1,163 @@
+.app {
+  background-image: url('images/musical-notes-bg.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100vh;
+  width: 100vw;
+  background-color: white;
+}
+.toolbar {
+  background-color: white;
+  border-bottom: 1px solid lightgray;
+  position: relative;
+  width: 100%;
+  height: 6%;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+}
+.toolbar__title {  
+  font-size: 0.8rem;
+  height: 100%;
+  width: 50%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+.toolbar__title h1 {
+  margin-left: 20%;
+}
+.toolbar__options {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+  height: 100%;
+  width: 50%;
+}
+
+.toolbar__sign-up, .toolbar__user-profile {
+  height: 80%;
+  margin-right: 20px;
+}
+
+.toolbar__sign-up {
+  padding: 0 14px 0 14px;
+  font-size: 1.2rem;
+  background-color: white;
+  border-radius: 1.3rem;
+}
+.toolbar__user-profile {
+  aspect-ratio: 1/1;
+  display: inline-block; /* or block, depending on layout */
+  margin-left: 5px;
+  border-radius: 2rem;
+  background-image: url('images/user-profile-logo.png');
+  background-size: cover; 
+  background-position: center;
+  border: none; /* to remove default button styling */
+}
+.toolbar__user-profile:hover {
+  transform: scale(1.1); 
+}
+
+.card-container {
+  position: relative;
+  width: 100%;
+  height: 50%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.card-container__card  {
+  padding: 5px 15px 5px 15px;
+  background-color:#ffffff;
+  margin-left: 40px;
+  height: 80%;
+  width: 20%;
+  border:1px solid lightcoral;
+  box-shadow: 10px 15px 25px rgba(0, 0, 0, 0.2); 
+  transition: transform 0.3s ease-in-out; /* smooth transition for hover effect */
+  position: relative;
+  z-index: 1;
+}
+.card-container__card:hover{
+  transform: scale(1.05); /* each card zooms in a bit when hovered over */
+}
+
+.clickable {
+  font-size: 1.2rem;
+  margin-bottom: 8px;
+  color: black;
+}
+
+.hero-section {
+  position: relative;
+  width: 100%;
+  height: 44%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.hero-section__caption {
+  margin-bottom: 6%;
+  color: black;
+  font-size: 4rem;
+  font-weight: bold;
+  text-align: center;
+}
+
+.hero-section__button {
+  text-decoration: none;
+  display: inline-block;
+  color: black;
+  padding: 20px 60px;
+  font-size: 1.5rem;
+}
+
+.glow-button {
+  border: none;
+  outline: none;
+  position: relative;
+  z-index: 1;
+  background: linear-gradient(45deg, #d93723, #507cd0, #4cdf7a, #e0c87a);
+  cursor: pointer;
+}
+
+.glow-button::before {
+  content: "";
+  position: absolute;
+  left: 2px;
+  right: 2px;
+  top: 2px;
+  bottom: 2px;
+  background-color: white;
+  z-index: -1;
+  transition: 200ms;
+}
+.glow-button, .glow-button::before { 
+  border-radius: 2rem; /* must change both to get rounded corners */
+} 
+.glow-button::after {
+  content: attr(data);
+  font-size: 16px;
+  background: linear-gradient(45deg, #d93723, #507cd0, #4cdf7a, #e0c87a);
+  transition: 200ms;
+}
+.glow-button:hover {
+  box-shadow: 
+      4px 4px 15px #7ca1f8, 
+      -4px -4px 15px #fb7c72, 
+      4px -4px 15px #67ff8d, 
+      -4px 4px 15px #f2fc62; 
+  transform: scale(1.03); 
+  transition: transform(1s);
+}
+.glow-button:active {
+  background-color: gray;
+}
+

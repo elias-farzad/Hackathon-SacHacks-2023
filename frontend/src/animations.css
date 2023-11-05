@@ -1,0 +1,66 @@
+.zoomIn:hover {
+    transform: scale(1.1); /* each section zooms in a bit when hovered over */
+    transition: transform .6s ease-in-out;
+  }
+  /*!fade-in*/
+  @keyframes fade-in {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+  }
+  /* different fade-in classes with different speeds */
+  .fade-in {
+    opacity: 0; /* make the element invisible at first*/
+    animation-name: fade-in;
+    animation-duration: .8s;
+    animation-fill-mode: forwards;
+  }
+  .fade-speed1{
+    animation-delay: .1s;
+  }
+  .fade-speed2{
+    animation-delay: .3s;
+  }
+  .fade-speed3{
+    animation-delay: .5s;
+  }
+
+  .fadeOut {
+    opacity: 0;
+    transition: opacity 0.3s; 
+  }
+  
+  
+  @keyframes slideIn {
+    from { transform: translateX(-100%); }
+    to { transform: translateX(0); }
+  }
+  .slideIn {
+    animation-name: slideIn;
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+  }
+  /*!fadeAndSlideIn combines the fade-in and slideIn animations*/
+  @keyframes fade-in-slide-in {
+    0% { 
+        opacity: 0;
+        transform: translateX(-20px);
+    }
+    100% { 
+        opacity: 1;
+        transform: translateX(0); 
+    }
+  }
+  .fade-in-slide-in {
+    animation-name: fade-in-slide-in;
+    animation-duration: 1.5s; /* adjust as needed */
+    animation-fill-mode: forwards;
+  }
+  .hoverImage:hover {
+    filter:url(#glow);
+    transform: scale(1.05);  /* increase image size by 10% when hover */
+    transition: transform .7s ease-in-out;   /* delay transition by 1 second */
+  }
+  .hoverImage {
+    transition: transform 1s ease-in-out;   /* delay transition by 1 second */
+  }
+  

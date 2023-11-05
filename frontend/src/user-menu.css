@@ -1,0 +1,28 @@
+.slide-out-menu {
+    position: fixed; 
+    top: 0; 
+    right: -250px; 
+    width: 250px; 
+    height: 100%; 
+    background-color: white;
+    box-shadow: -2px 0 5px rgba(0, 0, 0, 0.5); 
+    transition: right 0.4s; 
+    align-items: center;
+    z-index: 10; 
+    
+  }
+  
+  .slide-out-menu.open {
+    right: 0; 
+  
+  }
+  
+  .menu-item__photo {
+    width: 100px; 
+    height: 100px; 
+    background-image: url('images/user-profile-logo.png');
+    background-size: cover;
+    background-position: center; 
+    background-repeat: no-repeat; 
+  }
+  
