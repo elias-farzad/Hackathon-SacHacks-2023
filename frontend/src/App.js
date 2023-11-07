@@ -1,105 +1,53 @@
 import React, { useState, useEffect } from 'react';
-import { BrowserRouter as Router, Route, Routes, Switch, Link } from 'react-router-dom';
-import { useLocation } from 'react-router-dom'; 
-import { useMenuLogic } from './user-menu';
-import { submitComment } from './front-back-end-link';
+import { BrowserRouter as Router } from 'react-router-dom';
+import { Header, HeroSection, CardContainer } from './Components';
+import SlideOutMenu from './SlideOutMenu';
 import CommentFormPage from './CommentFormPage';
+
 import './App.css';
 import './animations.css';
-import './user-menu.css';
 
-// Header component
-const Header = ({ toggleMenu }) => (
-  <header className="toolbar">
-    <div className="toolbar__title">
-      <h1>Lyrical Link</h1>
-    </div>
-    <section className="toolbar__options">
-      <button className="toolbar__sign-up glow-button">Sign Up</button>
-      <button className="toolbar__sign-up glow-button">Log In</button>
-      <button onClick={toggleMenu} className="toolbar__user-profile menu-toggle"></button>
-    </section>
-  </header>
-);
 
-// HeroSection component (note: hero section means main)
-const HeroSection = ({ showContent, onCommentClick }) => (
-  <section className="hero-section">
-    {showContent ? (
-      <div className="hero-section__content">
-        <h1 className="hero-section__caption fade-in-slide-in">All the best music.</h1>
-        <button onClick={onCommentClick} className="hero-section__button fade-in-slide-in glow-button">
-          Comment
-        </button>
-      </div>
-    ) : (
-      <CommentFormPage />
-    )}
-  </section>
-);
-
-// CardContainer component
-const CardContainer = () => (
-  <div className="card-container">
-    <Card title="Top Artists" className="fade-in fade-speed1">
-      <ClickableLink id="link1" className="link song">Taylor Swift</ClickableLink>
-    </Card>
-    <Card title="Top Songs" className="fade-in fade-speed2">
-      <ClickableLink id="link2" className="link">Cruel Summer</ClickableLink>
-    </Card>
-    <Card title="Top Albums" className="fade-in fade-speed3">
-      <p>This is some content for Card 3.</p>
-      <ClickableLink id="link3" className="link">Link Example</ClickableLink>
-    </Card>
-  </div>
-);
-
-// Card component
-function Card({ title, className, children }) {
-    return (
-      <div className={`card-container__card ${className}`}>
-        <h2>{title}</h2>
-        {children}
-    </div>
-    );
-}
-
-// SlideOutMenu component
-const SlideOutMenu = ({ isMenuOpen }) => (
-  <div className={`slide-out-menu ${isMenuOpen ? 'open' : ''}`}>
-    <div className="menu-item__photo"></div>
-    <div className="menu-item">Contact Details</div>
-  </div>
-);
-
-// ClickableLink component
-function ClickableLink({ id, className, children }) {
-  return <div id={id} className={`clickable ${className}`}>{children}</div>;
-}
-
+// This is the main app structure component that holds all the other components in Components.js
 function App() {
-  const [showContent, setShowContent] = useState(true);
+  // State hooks to keep track of whether content and menu should be displayed
+  const [showContent, setShowContent] = useState(true); // Controls the visibility of the main content (ex. "All the best music"")
+  const [isMenuOpen, setMenuOpen] = useState(false);    // Controls the visibility of the menu
 
-  const { isMenuOpen, toggleMenu, closeMenu, handleMenuClick } = useMenuLogic();
-
-  // Function called when 'Explore' link is clicked
+  // Function called when 'Explore' link is clicked in the middle of the page, to start comments
   const handleCommentClick = () => {
     setShowContent(false);
   };
 
-  // Main app components
+  // Function called when the user opens and closes menus such as the user profile menu
+  const toggleMenu = () => {
+    setMenuOpen(!isMenuOpen);
+  };
+
+  // This useEffect hook will run once when the component is mounted
+  useEffect(() => {
+    document.title = "Lyric Link"; // Sets the title of the document to "Lyric Link" :)
+  }, []); // The empty dependency array means it will only run once on mount  
+
   return (
-    <Router>
+    <Router> {/*Wrapping the application in router to enable URL routing*/}
       <div className="app">
+
+        {/* Header component with the top toolbar and menu toggle functionality */}
         <Header toggleMenu={toggleMenu} />
+
+        {/* The hero (main) section adapts based on state (ex. may change to comment page*/}
         {showContent ? (
           <HeroSection showContent={showContent} onCommentClick={handleCommentClick} />
         ) : (
           <CommentFormPage/>
-
         )}
+          
+        {/* The card container holds the top artists, songs, albums */}
         <CardContainer />
-        <SlideOutMenu isMenuOpen={isMenuOpen} />
+          
+        {/* SlideOutMenu component that holds the user profile menu */}
+        <SlideOutMenu isMenuOpen={isMenuOpen} toggleMenu={toggleMenu} />
       </div>
     </Router>
   );
