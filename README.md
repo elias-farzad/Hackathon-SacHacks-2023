@@ -1,4 +1,4 @@
-# SacHacks 2023: LyricLink
+# [SacHacks 2023](https://sachacks.io/): LyricLink
 - LyricLink is a full stack application using Django, React, HTML & CSS.
 - It acts as a forum that sorts through the top 100 songs on Billboard. Users can leave thoughts and comments on the songs. 
 
