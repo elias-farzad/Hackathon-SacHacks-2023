@@ -5,13 +5,11 @@
 - It acts as a forum that sorts through the top 100 songs on Billboard. Users can leave thoughts and comments on the songs. 
 
 ### My Personal Experience
-I went into this Hackathon with 3 other teammates. We all decided to use a tech stack we were largely unfamiliar with, as we wanted to make this a learning experience. I was in charge of all of the frontend code as well as linking the frontend and backend together. 
+I did this Hackathon with 3 other teammates. We  decided to use a tech stack we had very little experience with, as we wanted to make this a learning experience. I worked directly on the backend logging system that creates new users and allows them login and logout.
 
-Designing the website was fun for me as always. I learned to get familiar with React which I barely had any exposure to. The real challenge was linking it to the backend - the tech stack wasn't just new to me, but I also had to familiarize myself with all the backend code that my teammates wrote. I ended up spending *a lot* of time understanding the code and debugging. I ended up waking up early, coding all day, and sleeping really late.
+It was my first time coding an actual application in Python, and especially using the Django framework since it had it's own backend and authentication system. This was a great first experience, even if it was stressful and sleep-deprived. I enjoyed working with the backend more than the front-end or any of the other systems that were part of the project. 
 
-Overall, I had a great time! Especially since my teammates were all very kind and bright people that were very easy to work with. The website turned out really pretty, and it was very satisfying seeing the Spotify API put in action as it showed all the songs that were updated in real time.
-
-**We only had 24 hours to learn everything, so I'm taking more time to polish it some more. I like seeing finished products and it's been a fun one to program, so I'll continuously make updates until I feel like it's satisfying.**
+I learned that I do enjoy working on the backend side of the project, being my first time trying it. It was exciting to connect my previous unlinked knowledge with the documentation for Django, and creating something that actually worked in the end. I look forward to more personal projects using similar frameworks and creating full-stack applications that will contribute something to society as well as teach me a thing or two.
 
 ### How To Run
 1. Extract ZIP file
